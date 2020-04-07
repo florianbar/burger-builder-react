@@ -21,15 +21,26 @@ class BurgerBuilder extends Component {
                 cheese: 0,
                 meat: 0
             },
-            totalPrice: 4 
+            totalPrice: 4,
+            purchasable: false
         };
+    }
+
+    updatePurchaseState(ingredients) {
+        const sum = Object.keys(ingredients)
+            .map(igKey => {
+                return ingredients[igKey];
+            })
+            .reduce((sum, el) => {
+                return sum + el;
+            }, 0);
+
+        this.setState({purchasable: sum > 0});
     }
 
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
+        const updatedIngredients = {...this.state.ingredients};
         updatedIngredients[type] = oldCount + 1;
 
         const priceAddition = INGREDIENT_PRICES[type];
@@ -40,6 +51,8 @@ class BurgerBuilder extends Component {
             ingredients: updatedIngredients,
             totalPrice: newPrice
         });
+
+        this.updatePurchaseState(updatedIngredients);
     };
 
     removeIngredientHandler = (type) => {
@@ -47,9 +60,7 @@ class BurgerBuilder extends Component {
         if (oldCount <= 0) {
             return;
         }
-        const updatedIngredients = {
-            ...this.state.ingredients
-        };
+        const updatedIngredients = {...this.state.ingredients};
         updatedIngredients[type] = oldCount - 1;
         
 
@@ -61,12 +72,12 @@ class BurgerBuilder extends Component {
             ingredients: updatedIngredients,
             totalPrice: newPrice
         });
+
+        this.updatePurchaseState(updatedIngredients);
     };
 
     render() {
-        const disabledInfo = {
-            ...this.state.ingredients
-        };
+        const disabledInfo = {...this.state.ingredients};
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
@@ -78,7 +89,8 @@ class BurgerBuilder extends Component {
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler} 
                     disabled={disabledInfo}
-                    price={this.state.totalPrice} />
+                    price={this.state.totalPrice}
+                    purchasable={this.state.purchasable} />
             </React.Fragment>
         );
     }
