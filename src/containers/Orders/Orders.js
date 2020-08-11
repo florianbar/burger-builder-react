@@ -37,10 +37,14 @@ class Orders extends Component {
 
         if (!this.state.loading) {
             orders = (
-                <React.Fragment>
-                    <Order />
-                    <Order />
-                </React.Fragment>
+                <div>
+                    {this.state.orders.map(order => (
+                        <Order 
+                            key={order.id} 
+                            ingredients={order.ingredients} 
+                            price={order.price} />
+                    ))}
+                </div>
             );
         }
 
