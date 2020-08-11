@@ -99,32 +99,34 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        this.setState({loading: true});
+        // this.setState({loading: true});
 
-        const orderData = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: "Flo Bär",
-                address: {
-                    street: "22 Cross Road",
-                    zipCode: "7441",
-                    country: "South Africa"
-                },
-                email: "test@test.com"
-            },
-            deliveryMethod: "fastest"
-        };
+        // const orderData = {
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer: {
+        //         name: "Flo Bär",
+        //         address: {
+        //             street: "22 Cross Road",
+        //             zipCode: "7441",
+        //             country: "South Africa"
+        //         },
+        //         email: "test@test.com"
+        //     },
+        //     deliveryMethod: "fastest"
+        // };
 
-        axios.post("/orders.json", orderData)
-            .then(response => {
-                //console.log(response);
-                this.setState({loading: false, purchasing: false});
-            })
-            .catch(error => {
-                //console.log(error);
-                this.setState({loading: false, purchasing: false});
-            });
+        // axios.post("/orders.json", orderData)
+        //     .then(response => {
+        //         //console.log(response);
+        //         this.setState({loading: false, purchasing: false});
+        //         this.props.history.push("/checkout");
+        //     })
+        //     .catch(error => {
+        //         //console.log(error);
+        //         this.setState({loading: false, purchasing: false});
+        //     });
+        this.props.history.push("/checkout");
     }
 
     render() {
