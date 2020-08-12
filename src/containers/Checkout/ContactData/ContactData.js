@@ -8,12 +8,56 @@ import classes from './ContactData.module.css';
 
 class ContactData extends Component {
     state = {
-        customer: {
-            name: "",
-            email: "",
-            address: {
-                street: "",
-                postalCode: ""
+        orderForm: {
+            name: {
+                elementType: "input",
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Your name"
+                },
+                value: ""
+            },
+            street: {
+                elementType: "input",
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Your street"
+                },
+                value: ""
+            },
+            zipCode: {
+                elementType: "input",
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Your ZIP code"
+                },
+                value: ""
+            },
+            country: {
+                elementType: "input",
+                elementConfig: {
+                    type: "text",
+                    placeholder: "Your country"
+                },
+                value: ""
+            },
+            email: {
+                elementType: "input",
+                elementConfig: {
+                    type: "email",
+                    placeholder: "Your email"
+                },
+                value: ""
+            },
+            deliveryMethod: {
+                elementType: "select",
+                elementConfig: {
+                    options: [
+                        {value: "fastest", displayValue: "Fastest"},
+                        {value: "cheapest", displayValue: "Cheapest"}
+                    ]
+                },
+                value: ""
             }
         },
         loading: false
@@ -47,7 +91,7 @@ class ContactData extends Component {
     render () {
         let form = (
             <form>
-                <Input inputtype="input" label="Name" type="text" name="name" placeholder="Your name" />
+                <Input elementType="" elementConfig="" value="" />
                 <Input inputtype="input" label="Email" type="email" name="email" placeholder="Your email" />
                 <Input inputtype="input" label="Street" type="text" name="street" placeholder="Your street" />
                 <Input inputtype="input" label="Postal Code" type="text" name="postalCode" placeholder="Your postal code" />
