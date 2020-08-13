@@ -85,6 +85,7 @@ class ContactData extends Component {
                     ]
                 },
                 value: "cheapest",
+                validation: {},
                 valid: true
             }
         },
@@ -153,7 +154,7 @@ class ContactData extends Component {
         for (let inputId in updatedOrderForm) {
             formIsValid = updatedOrderForm[inputId].valid && formIsValid;
         }
-        
+
         this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
     }
     
