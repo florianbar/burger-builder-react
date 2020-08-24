@@ -16,7 +16,6 @@ class BurgerBuilder extends Component {
         super(props);
 
         this.state = {
-            purchasable: false,
             purchasing: false
         };
     }
@@ -41,7 +40,7 @@ class BurgerBuilder extends Component {
                 return sum + el;
             }, 0);
 
-        this.setState({purchasable: sum > 0});
+        return sum > 0;
     }
 
     purchaseHandler = () => {
@@ -90,7 +89,7 @@ class BurgerBuilder extends Component {
                         disabled={disabledInfo}
                         price={this.props.totalPrice}
                         ordered={this.purchaseHandler}
-                        purchasable={this.state.purchasable} />
+                        purchasable={this.updatePurchaseState(this.props.ingredients)} />
                 </React.Fragment>
             );
         }
