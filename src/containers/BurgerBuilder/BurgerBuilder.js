@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from '../../axios-orders';
 
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/actions/actionCreators/index';
 
+import axios from '../../axios-orders';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -21,14 +21,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        // axios.get("/ingredients.json")
-        //     .then(response => {
-        //         console.log(response.data);
-        //         this.setState({ingredients: response.data});
-        //     })
-        //     .catch(error => {
-        //         this.setState({error: true});
-        //     });
+        
     }
 
     updatePurchaseState(ingredients) {
