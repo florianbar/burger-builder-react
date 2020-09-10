@@ -12,7 +12,6 @@ import orderReducer from './store/reducers/order';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { auth } from './store/actions/actionCreators';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

@@ -1,11 +1,11 @@
 import * as actionTypes from '../actionTypes';
 import axios from '../../../axios-orders';
 
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, idToken) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
 
-        axios.post("/orders.json", orderData)
+        axios.post(`/orders.json?auth=${idToken}`, orderData)
             .then(response => {
                 console.log(response.data);
                 dispatch(purchaseBurgerSuccess(response.data.name, orderData));
@@ -23,11 +23,11 @@ export const purchaseInit = () => {
     };
 };
 
-export const fetchOrders = () => {
+export const fetchOrders = (idToken) => {
     return dispatch => {
         dispatch(fetchOrdersStart());
 
-        axios.get("/orders.json")
+        axios.get(`/orders.json?auth=${idToken}`)
             .then(response => {
                 const fetchedOrders = [];
                 for (let key in response.data) {
